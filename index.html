@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOJA DE PRODUTOS DO TWICE | Loja oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --rosa: #FF69B4;
+            --roxo: #8A2BE2;
+            --azul: #4169E1;
+            --amarelo: #FFD700;
+            --verde: #32CD32;
+            --branco: #FFFFFF;
+            --preto: #333333;
+            --cinza: #F5F5F5;
+            --cinza-escuro: #E0E0E0;
+        }
+        
+        body {
+            background-color: var(--cinza);
+            color: var(--preto);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header e Navegação */
+        header {
+            background: linear-gradient(135deg, var(--rosa), var(--roxo));
+            color: var(--branco);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--amarelo);
+            color: var(--preto);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Banner Principal - Centralizado */
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn-images.dzcdn.net/images/artist/1f4acadade675899b7f775ae4ac67faa/1900x1900-000000-81-0-0.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--branco);
+            margin-bottom: 40px;
+        }
+        
+        .banner-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .banner-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+        
+        .banner-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--rosa);
+            color: var(--branco);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--roxo);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Seção de Categorias */
+        .categories {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--roxo);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--rosa), var(--roxo));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background-color: var(--branco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-img img {
+            transform: scale(1.1);
+        }
+        
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--roxo);
+        }
+        
+        /* Produtos em Destaque */
+        .featured-products {
+            margin-bottom: 50px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--roxo);
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--rosa);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart {
+            background-color: var(--azul);
+            color: var(--branco);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--roxo);
+        }
+        
+        /* Páginas de Categorias */
+        .category-page {
+            display: none;
+            padding: 40px 0;
+        }
+        
+        .category-page.active {
+            display: block;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, var(--azul), var(--roxo));
+            color: var(--branco);
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .filter-bar {
+            background-color: var(--branco);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+        }
+        
+        .filter-group label {
+            margin-right: 10px;
+            font-weight: 600;
+        }
+        
+        .filter-group select {
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .search-box {
+            flex-grow: 1;
+            display: flex;
+        }
+        
+        .search-box input {
+            flex-grow: 1;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .search-box button {
+            background-color: var(--azul);
+            color: var(--branco);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        
+        /* Formulário de Cadastro */
+        .signup-section {
+            background: linear-gradient(135deg, var(--azul), var(--roxo));
+            color: var(--branco);
+            padding: 60px 0;
+            margin-bottom: 50px;
+            border-radius: 15px;
+        }
+        
+        .signup-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .signup-container h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .signup-container p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .signup-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            text-align: left;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / 3;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            grid-column: 1 / 3;
+            background-color: var(--rosa);
+            color: var(--branco);
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--amarelo);
+            color: var(--preto);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--preto);
+            color: var(--branco);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--rosa);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--rosa);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--rosa);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        /* Modal do Carrinho */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 350px;
+            height: 100%;
+            background-color: var(--branco);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--preto);
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-details {
+            flex-grow: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--rosa);
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        
+        .quantity-btn {
+            background-color: #f0f0f0;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity {
+            margin: 0 10px;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--verde);
+            color: var(--branco);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #28a428;
+        }
+        
+        /* Modal de Produto */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1200;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .product-modal-content {
+            background-color: var(--branco);
+            max-width: 900px;
+            margin: 50px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .close-product {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--preto);
+            z-index: 10;
+        }
+        
+        .product-modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+            .product-modal-body {
+                flex-direction: row;
+            }
+        }
+        
+        .product-modal-img {
+            flex: 1;
+            min-height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-modal-info {
+            flex: 1;
+            padding: 30px;
+        }
+        
+        .product-modal-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--roxo);
+        }
+        
+        .product-modal-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--rosa);
+            margin-bottom: 20px;
+        }
+        
+        .product-modal-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .product-options {
+            margin-bottom: 20px;
+        }
+        
+        .option-group {
+            margin-bottom: 15px;
+        }
+        
+        .option-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .option-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .modal-add-to-cart {
+            background-color: var(--azul);
+            color: var(--branco);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .modal-add-to-cart:hover {
+            background-color: var(--roxo);
+        }
+        
+        /* Mensagem Principal Centralizada */
+        .main-message {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--azul), var(--roxo));
+            color: var(--branco);
+            margin: 40px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-message h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .main-message p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Página de Checkout */
+        .checkout-page {
+            display: none;
+            padding: 40px 0;
+        }
+        
+        .checkout-page.active {
+            display: block;
+        }
+        
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 992px) {
+            .checkout-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+        
+        .checkout-form {
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checkout-summary {
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            align-self: start;
+        }
+        
+        .checkout-section {
+            margin-bottom: 30px;
+        }
+        
+        .checkout-section h3 {
+            margin-bottom: 20px;
+            color: var(--roxo);
+            border-bottom: 2px solid var(--rosa);
+            padding-bottom: 10px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .form-control {
+            margin-bottom: 15px;
+        }
+        
+        .form-control label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-control input, .form-control select, .form-control textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-method {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--azul);
+        }
+        
+        .payment-method.selected {
+            border-color: var(--azul);
+            background-color: rgba(65, 105, 225, 0.05);
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--azul);
+        }
+        
+        .order-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        
+        .save-address {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .save-address input {
+            margin-right: 10px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .banner-content p {
+                font-size: 1.1rem;
+            }
+            
+            .signup-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: 1;
+            }
+            
+            .submit-btn {
+                grid-column: 1;
+            }
+            
+            .cart-modal {
+                width: 100%;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .main-message h2 {
+                font-size: 2rem;
+            }
+            
+            .main-message p {
+                font-size: 1.1rem;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo" id="homeLink">
+                <i class="fas fa-crown"></i>
+                <span>TWICE LOJA</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-page="home">Início</a></li>
+                    <li><a href="#albums" class="nav-link" data-page="albums">Álbuns</a></li>
+                    <li><a href="#clothing" class="nav-link" data-page="clothing">Roupas</a></li>
+                    <li><a href="#accessories" class="nav-link" data-page="accessories">Acessórios</a></li>
+                    <li><a href="#signup" class="nav-link" data-page="signup">Cadastro</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Página Inicial -->
+    <section id="home" class="page active">
+        <!-- Banner Principal -->
+        <div class="banner">
+            <div class="banner-content">
+                <h1>Loja oficial do TWICE</h1>
+                <p>Bem-vindo à loja de produtos oficiais do TWICE no Brasil! Encontre os últimos álbuns, roupas exclusivas e acessórios incríveis das suas integrantes favoritas do grupo feminino de K-POP.</p>
+                <a href="#categories" class="btn">Explorar Produtos</a>
+            </div>
+        </div>
+
+        <!-- Mensagem Principal Centralizada -->
+        <div class="container">
+            <div class="main-message">
+                <h2>ONCEs, sejam bem-vindos!</h2>
+                <p>Na TWICE LOJA, oferecemos produtos oficiais e exclusivos para os fãs mais dedicados e apaixonados. De álbuns limitados a roupas inspiradas no estilo único das integrantes, temos tudo para você mostrar seu amor pelo TWICE!</p>
+                <a href="#signup" class="btn nav-link" data-page="signup">Junte-se ao nosso Fandom</a>
+            </div>
+        </div>
+
+        <!-- Seção de Categorias -->
+        <section class="categories" id="categories">
+            <div class="container">
+                <h2 class="section-title">Nossas Categorias</h2>
+                <div class="category-grid">
+                    <div class="category-card" data-category="albums">
+                        <div class="category-img">
+                            <img src="https://m.media-amazon.com/images/I/51WwBP-SpcL._UF894,1000_QL80_.jpg" alt="Álbuns">
+                        </div>
+                        <div class="category-content">
+                            <h3>Álbuns</h3>
+                            <p>Descubra a coleção completa de álbuns do TWICE</p>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" data-category="clothing">
+                        <div class="category-img">
+                            <img src="https://cf.shopee.com.br/file/sg-11134201-7rd6g-m6o0gn88lnrua9" alt="Roupas">
+                        </div>
+                        <div class="category-content">
+                            <h3>Roupas</h3>
+                            <p>Roupas exclusivas inspiradas no TWICE</p>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" data-category="accessories">
+                        <div class="category-img">
+                            <img src="https://m.media-amazon.com/images/I/61tMDUPiJCL._SY1000_.jpg" alt="Acessórios">
+                        </div>
+                        <div class="category-content">
+                            <h3>Acessórios</h3>
+                            <p>Lightsticks, photocard e muito mais</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Produtos em Destaque -->
+        <section class="featured-products">
+            <div class="container">
+                <h2 class="section-title">Produtos em Destaque</h2>
+                <div class="product-grid">
+                    <div class="product-card" data-product-id="1">
+                        <div class="product-img">
+                            <img src="https://m.media-amazon.com/images/I/41nyytOXIjL._UF1000,1000_QL80_.jpg" alt="Álbum TWICE">
+                        </div>
+                        <div class="product-info">
+                            <h3>Álbum "BETWEEN 1&2"</h3>
+                            <p>O mais recente álbum do TWICE com fotocards exclusivos</p>
+                            <div class="product-price">R$ 250,00</div>
+                            <button class="add-to-cart" data-id="1" data-name="Álbum BETWEEN 1&2" data-price="250,00">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-product-id="2">
+                        <div class="product-img">
+                            <img src="https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkgum8b9wqmhd8" alt="Camiseta TWICE">
+                        </div>
+                        <div class="product-info">
+                            <h3>Camiseta Oficial TWICE</h3>
+                            <p>Camiseta de algodão com estampa exclusiva</p>
+                            <div class="product-price">R$ 99,90</div>
+                            <button class="add-to-cart" data-id="2" data-name="Camiseta Oficial TWICE" data-price="99.90">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-product-id="3">
+                        <div class="product-img">
+                            <img src="https://down-br.img.susercontent.com/file/e9392f617e293d96c03107c2e9fc8b04" alt="Lightstick TWICE">
+                        </div>
+                        <div class="product-info">
+                            <h3>Lightstick Oficial Candy Bong</h3>
+                            <p>Lightstick oficial do TWICE para shows e eventos</p>
+                            <div class="product-price">R$ 499,90</div>
+                            <button class="add-to-cart" data-id="3" data-name="Lightstick Candy Bong" data-price="499.90">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-product-id="4">
+                        <div class="product-img">
+                            <img src="https://m.media-amazon.com/images/I/31g5W+X3pzL._SY1000_.jpg" alt="Moletom TWICE">
+                        </div>
+                        <div class="product-info">
+                            <h3>Conjunto de moletom Exclusivo TWICE</h3>
+                            <p>Conjunto de moletom com design especial do grupo</p>
+                            <div class="product-price">R$ 229,90</div>
+                            <button class="add-to-cart" data-id="4" data-name="Moletom Exclusivo TWICE" data-price="229.90">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Página de Álbuns -->
+    <section id="albums" class="category-page">
+        <div class="page-header">
+            <div class="container">
+                <h1>Álbuns do TWICE</h1>
+                <p>Descubra a discografia completa do grupo</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label for="album-filter">Filtrar por:</label>
+                    <select id="album-filter">
+                        <option value="all">Todos os Álbuns</option>
+                        <option value="korean">Álbuns Coreanos</option>
+                        <option value="japanese">Álbuns Japoneses</option>
+                        <option value="latest">Mais Recentes</option>
+                    </select>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar álbuns...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Álbuns serão carregados dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Página de Roupas -->
+    <section id="clothing" class="category-page">
+        <div class="page-header">
+            <div class="container">
+                <h1>Roupas do TWICE</h1>
+                <p>Estilo exclusivo inspirado no grupo</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label for="clothing-filter">Filtrar por:</label>
+                    <select id="clothing-filter">
+                        <option value="all">Todas as Roupas</option>
+                        <option value="tshirts">Camisetas</option>
+                        <option value="hoodies">Moletons</option>
+                        <option value="accessories">Acessórios</option>
+                    </select>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar roupas...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Roupas serão carregadas dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Página de Acessórios -->
+    <section id="accessories" class="category-page">
+        <div class="page-header">
+            <div class="container">
+                <h1>Acessórios do TWICE</h1>
+                <p>Itens especiais para ONCEs de verdade</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label for="accessory-filter">Filtrar por:</label>
+                    <select id="accessory-filter">
+                        <option value="all">Todos os Acessórios</option>
+                        <option value="lightsticks">Lightsticks</option>
+                        <option value="photocards">Photocards</option>
+                        <option value="other">Outros</option>
+                    </select>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar acessórios...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Acessórios serão carregados dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Cadastro -->
+    <section id="signup" class="category-page">
+        <div class="page-header">
+            <div class="container">
+                <h1>Junte-se ao fandom ONCE!</h1>
+                <p>Cadastre-se para receber novidades exclusivas</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="signup-section">
+                <div class="signup-container">
+                    <form class="signup-form" id="signupForm">
+                        <div class="form-group">
+                            <label for="firstName">Nome</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Sobrenome</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate">Data de Nascimento</label>
+                            <input type="date" id="birthdate" name="birthdate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">País</label>
+                            <select id="country" name="country" required>
+                                <option value="">Selecione...</option>
+                                <option value="br">Brasil</option>
+                                <option value="us">Estados Unidos</option>
+                                <option value="kr">Coreia do Sul</option>
+                                <option value="jp">Japão</option>
+                                <option value="other">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="favoriteMember">Integrante Favorita</label>
+                            <select id="favoriteMember" name="favoriteMember" required>
+                                <option value="">Selecione...</option>
+                                <option value="nayeon">Nayeon</option>
+                                <option value="jeongyeon">Jeongyeon</option>
+                                <option value="momo">Momo</option>
+                                <option value="sana">Sana</option>
+                                <option value="jihyo">Jihyo</option>
+                                <option value="mina">Mina</option>
+                                <option value="dahyun">Dahyun</option>
+                                <option value="chaeyoung">Chaeyoung</option>
+                                <option value="tzuyu">Tzuyu</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="message">Mensagem para o TWICE (opcional)</label>
+                            <textarea id="message" name="message" placeholder="Deixe uma mensagem de apoio para as integrantes..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Página de Checkout -->
+    <section id="checkout" class="checkout-page">
+        <div class="page-header">
+            <div class="container">
+                <h1>Finalizar Compra</h1>
+                <p>Complete suas informações para receber seus produtos</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <form id="checkoutForm">
+                        <!-- Informações de Contato -->
+                        <div class="checkout-section">
+                            <h3>Informações de Contato</h3>
+                            <div class="form-row">
+                                <div class="form-control">
+                                    <label for="checkoutFirstName">Nome</label>
+                                    <input type="text" id="checkoutFirstName" name="firstName" required>
+                                </div>
+                                <div class="form-control">
+                                    <label for="checkoutLastName">Sobrenome</label>
+                                    <input type="text" id="checkoutLastName" name="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-control">
+                                <label for="checkoutEmail">E-mail</label>
+                                <input type="email" id="checkoutEmail" name="email" required>
+                            </div>
+                            <div class="form-control">
+                                <label for="checkoutPhone">Telefone</label>
+                                <input type="tel" id="checkoutPhone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Endereço de Entrega -->
+                        <div class="checkout-section">
+                            <h3>Endereço de Entrega</h3>
+                            <div class="form-control">
+                                <label for="checkoutCEP">CEP</label>
+                                <input type="text" id="checkoutCEP" name="cep" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-control">
+                                    <label for="checkoutAddress">Endereço</label>
+                                    <input type="text" id="checkoutAddress" name="address" required>
+                                </div>
+                                <div class="form-control">
+                                    <label for="checkoutNumber">Número</label>
+                                    <input type="text" id="checkoutNumber" name="number" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-control">
+                                    <label for="checkoutComplement">Complemento</label>
+                                    <input type="text" id="checkoutComplement" name="complement">
+                                </div>
+                                <div class="form-control">
+                                    <label for="checkoutNeighborhood">Bairro</label>
+                                    <input type="text" id="checkoutNeighborhood" name="neighborhood" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-control">
+                                    <label for="checkoutCity">Cidade</label>
+                                    <input type="text" id="checkoutCity" name="city" required>
+                                </div>
+                                <div class="form-control">
+                                    <label for="checkoutState">Estado</label>
+                                    <select id="checkoutState" name="state" required>
+                                        <option value="">Selecione...</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="save-address">
+                                <input type="checkbox" id="saveAddress" name="saveAddress">
+                                <label for="saveAddress">Salvar este endereço para futuras compras</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Método de Pagamento -->
+                        <div class="checkout-section">
+                            <h3>Método de Pagamento</h3>
+                            <div class="payment-methods">
+                                <div class="payment-method" data-method="credit">
+                                    <i class="far fa-credit-card"></i>
+                                    <p>Cartão de Crédito</p>
+                                </div>
+                                <div class="payment-method" data-method="debit">
+                                    <i class="fas fa-credit-card"></i>
+                                    <p>Cartão de Débito</p>
+                                </div>
+                                <div class="payment-method" data-method="pix">
+                                    <i class="fas fa-qrcode"></i>
+                                    <p>PIX</p>
+                                </div>
+                                <div class="payment-method" data-method="boleto">
+                                    <i class="fas fa-barcode"></i>
+                                    <p>Boleto</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Detalhes do Cartão (aparece apenas para cartão) -->
+                            <div id="cardDetails" style="display: none; margin-top: 20px;">
+                                <div class="form-control">
+                                    <label for="cardNumber">Número do Cartão</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-control">
+                                        <label for="cardName">Nome no Cartão</label>
+                                        <input type="text" id="cardName" name="cardName" placeholder="Como está no cartão">
+                                    </div>
+                                    <div class="form-control">
+                                        <label for="cardExpiry">Validade</label>
+                                        <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/AA">
+                                    </div>
+                                    <div class="form-control">
+                                        <label for="cardCVV">CVV</label>
+                                        <input type="text" id="cardCVV" name="cardCVV" placeholder="123">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-control">
+                                        <label for="cardInstallments">Parcelas</label>
+                                        <select id="cardInstallments" name="installments">
+                                            <option value="1">1x sem juros</option>
+                                            <option value="2">2x sem juros</option>
+                                            <option value="3">3x sem juros</option>
+                                            <option value="4">4x sem juros</option>
+                                            <option value="5">5x sem juros</option>
+                                            <option value="6">6x sem juros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Detalhes do PIX (aparece apenas para PIX) -->
+                            <div id="pixDetails" style="display: none; margin-top: 20px; text-align: center;">
+                                <p><i class="fas fa-qrcode" style="font-size: 3rem; color: var(--azul);"></i></p>
+                                <p>Após confirmar o pedido, você receberá um código PIX para pagamento.</p>
+                                <p>O prazo de validade é de 30 minutos.</p>
+                            </div>
+                            
+                            <!-- Detalhes do Boleto (aparece apenas para boleto) -->
+                            <div id="boletoDetails" style="display: none; margin-top: 20px; text-align: center;">
+                                <p><i class="fas fa-barcode" style="font-size: 3rem; color: var(--azul);"></i></p>
+                                <p>Após confirmar o pedido, você receberá o boleto para pagamento.</p>
+                                <p>O prazo de vencimento é de 2 dias úteis.</p>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%; padding: 15px; font-size: 1.2rem;">Finalizar Pedido</button>
+                    </form>
+                </div>
+                
+                <div class="checkout-summary">
+                    <h3>Resumo do Pedido</h3>
+                    <div id="checkoutItems">
+                        <!-- Itens do pedido serão carregados dinamicamente -->
+                    </div>
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <span id="checkoutTotal">R$ 0,00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre a Loja</h3>
+                    <p>Loja oficial do TWICE no Brasil, oferecendo produtos autênticos e exclusivos para ONCEs.</p>
+                    <p>Parceria com a JYP Entertainment.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <a href="#home" class="nav-link" data-page="home">Início</a>
+                    <a href="#albums" class="nav-link" data-page="albums">Álbuns</a>
+                    <a href="#clothing" class="nav-link" data-page="clothing">Roupas</a>
+                    <a href="#accessories" class="nav-link" data-page="accessories">Acessórios</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-envelope"></i> twicelojaoficial@gmail.com </p>
+                    <p><i class="fas fa-phone"></i> (31) 99856-3342</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Minas Gerais, Brasil</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2021 TWICE Oficial Loja. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal do Carrinho -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Meu Carrinho</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Itens do carrinho serão adicionados aqui dinamicamente -->
+        </div>
+        <div class="cart-total" id="cartTotal">Total: R$ 0,00</div>
+        <button class="checkout-btn" id="goToCheckout">Finalizar Compra</button>
+    </div>
+
+    <!-- Modal de Produto -->
+    <div class="product-modal" id="productModal">
+        <div class="product-modal-content">
+            <button class="close-product" id="closeProduct">&times;</button>
+            <div class="product-modal-body">
+                <div class="product-modal-img" id="productModalImg"></div>
+                <div class="product-modal-info">
+                    <h2 id="productModalTitle">Nome do Produto</h2>
+                    <div class="product-modal-price" id="productModalPrice">R$ 0,00</div>
+                    <div class="product-modal-description" id="productModalDescription">Descrição do produto.</div>
+                    
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label for="productSize">Tamanho (se aplicável):</label>
+                            <select id="productSize">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="productColor">Cor (se aplicável):</label>
+                            <select id="productColor">
+                                <option value="">Selecione a cor</option>
+                                <option value="preto">Preto</option>
+                                <option value="branco">Branco</option>
+                                <option value="rosa">Rosa</option>
+                                <option value="roxo">Roxo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="modal-add-to-cart" id="modalAddToCart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos produtos
+        const products = {
+            albums: [
+                {
+                    id: 1,
+                    name: "Álbum BETWEEN 1&2",
+                    price: 250.00,
+                    image: "https://acdn-us.mitiendanube.com/stores/987/955/products/s-l1600-d536a40eea5c725a2817326621850720-1024-1024.webp",
+                    description: "O mais recente álbum do TWICE com fotocards exclusivos e pôster especial. Inclui versão limitada com conteúdo bônus.",
+                    category: "korean"
+                },
+                {
+                    id: 5,
+                    name: "Álbum Formula of Love",
+                    price: 220.90,
+                    image: "https://acdn-us.mitiendanube.com/stores/001/773/435/products/novo-projeto-2023-08-02t155024-3081-d214f3dba6bd7d8bfa16910024237567-1024-1024.png",
+                    description: "Álbum especial com conceito científico, incluindo fotocards aleatórios e encarte de alta qualidade.",
+                    category: "korean"
+                },
+                {
+                    id: 6,
+                    name: "Álbum Taste of Love",
+                    price: 225.90,
+                    image: "https://www.subkshop.com/cdn/shop/products/thumbnail_143cd196-7e90-4379-8f7c-416b046497e5.jpg?v=1625713090",
+                    description: "Edição especial de verão com conceito tropical. Inclui photobook exclusivo e itens colecionáveis.",
+                    category: "korean"
+                },
+                {
+                    id: 7,
+                    name: "Álbum Perfect World",
+                    price: 190.90,
+                    image: "https://m.media-amazon.com/images/I/719YHK0Q92L._UF894,1000_QL80_.jpg",
+                    description: "Álbum japonês com músicas exclusivas e conteúdo visual impressionante. Edição limitada.",
+                    category: "japanese"
+                }
+            ],
+            clothing: [
+                {
+                    id: 2,
+                    name: "Camiseta Oficial TWICE",
+                    price: 99.90,
+                    image: "https://down-br.img.susercontent.com/file/br-11134207-7qukw-lkgum8b9wqmhd8",
+                    description: "Camiseta de algodão 100% com estampa exclusiva do TWICE. Confortável e durável para uso diário.",
+                    category: "tshirts"
+                },
+                {
+                    id: 4,
+                    name: "Moletom Exclusivo TWICE",
+                    price: 179.90,
+                    image: "https://www.capsulashop.com.br/cdn/shop/files/blusa-moletom-twice-rosa.jpg?v=1756907111",
+                    description: "Moletom quentinho com design especial do grupo. Perfeito para dias frios e eventos de fãs.",
+                    category: "hoodies"
+                },
+                {
+                    id: 8,
+                    name: "Jaqueta TWICE",
+                    price: 230.90,
+                    image: "https://www.miseasiamore.com.br/image/cache/catalog/pasta9999999969/31-870x1110.jpg",
+                    description: "Jaqueta exclusiva do TWICE. Material de alta qualidade e design único.",
+                    category: "hoodies"
+                },
+                {
+                    id: 9,
+                    name: "Calça exclusiva do TWICE",
+                    price: 149.90,
+                    image: "https://planetstore7.com.br/cdn/shop/files/1694729170699.jpg?v=1756870449&width=1445",
+                    description: "Calça de moletom exclusiva da 3° turnê mundial do TWICE.",
+                    category: "tshirts"
+                }
+            ],
+            accessories: [
+                {
+                    id: 3,
+                    name: "Lightstick Oficial Candy Bong",
+                    price: 499.90,
+                    image: "https://m.media-amazon.com/images/I/614knj+D85L.jpg",
+                    description: "Lightstick oficial do TWICE para shows e eventos. Com luzes coloridas e design exclusivo.",
+                    category: "lightsticks"
+                },
+                {
+                    id: 10,
+                    name: "Kit de Photocards Exclusivos",
+                    price: 120.90,
+                    image: "https://acdn-us.mitiendanube.com/stores/001/752/612/products/s5e7658cd34434dc2b19b3129997ca635k-jpg_-ba2d8ca772671fa2a017282566357128-1024-1024.webp",
+                    description: "Kit com 7 photocards aleatórios das integrantes. Edição limitada com designs especiais.",
+                    category: "photocards"
+                },
+                {
+                    id: 11,
+                    name: "Garrafa do TWICE",
+                    price: 79.90,
+                    image: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lvbug50aaf690c",
+                    description: "Garrafa térmica exclusiva e personalizada das integrantes do TWICE.",
+                    category: "other"
+                },
+                {
+                    id: 12,
+                    name: "Chaveiro Integrantes TWICE",
+                    price: 35.90,
+                    image: "https://cf.shopee.com.br/file/sg-11134201-7rblp-lprla1mdeamdd9",
+                    description: "Chaveiro colecionável com as 9 integrantes do TWICE. Material durável e design detalhado.",
+                    category: "other"
+                }
+            ]
+        };
+
+        // Funcionalidades do site
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartIcon = document.getElementById('cartIcon');
+            const cartModal = document.getElementById('cartModal');
+            const closeCart = document.getElementById('closeCart');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const checkoutBtn = document.getElementById('goToCheckout');
+            const cartCount = document.querySelector('.cart-count');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page, .category-page, .checkout-page');
+            const homeLink = document.getElementById('homeLink');
+            const categoryCards = document.querySelectorAll('.category-card');
+            const productCards = document.querySelectorAll('.product-card');
+            const productModal = document.getElementById('productModal');
+            const closeProduct = document.getElementById('closeProduct');
+            const modalAddToCart = document.getElementById('modalAddToCart');
+            const checkoutForm = document.getElementById('checkoutForm');
+            const checkoutItems = document.getElementById('checkoutItems');
+            const checkoutTotal = document.getElementById('checkoutTotal');
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const cardDetails = document.getElementById('cardDetails');
+            const pixDetails = document.getElementById('pixDetails');
+            const boletoDetails = document.getElementById('boletoDetails');
+            
+            let cart = [];
+            let currentProduct = null;
+            let selectedPaymentMethod = null;
+            
+            // Inicializar páginas de categoria com produtos
+            initCategoryPages();
+            
+            // Navegação entre páginas
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    
+                    // Atualizar navegação ativa
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar página selecionada
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById(pageId).classList.add('active');
+                    
+                    // Scroll para o topo
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Link para página inicial
+            homeLink.addEventListener('click', function() {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                document.querySelector('.nav-link[data-page="home"]').classList.add('active');
+                
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById('home').classList.add('active');
+                
+                window.scrollTo(0, 0);
+            });
+            
+            // Navegação por categorias na página inicial
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Atualizar navegação
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    document.querySelector(`.nav-link[data-page="${category}"]`).classList.add('active');
+                    
+                    // Mostrar página da categoria
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById(category).classList.add('active');
+                    
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Abrir modal de produto
+            productCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product-id');
+                    openProductModal(productId);
+                });
+            });
+            
+            // Fechar modal de produto
+            closeProduct.addEventListener('click', function() {
+                productModal.style.display = 'none';
+            });
+            
+            // Fechar modal ao clicar fora
+            window.addEventListener('click', function(e) {
+                if (e.target === productModal) {
+                    productModal.style.display = 'none';
+                }
+                if (e.target === cartModal) {
+                    cartModal.style.display = 'none';
+                }
+            });
+            
+            // Abrir/fechar carrinho
+            cartIcon.addEventListener('click', function() {
+                cartModal.style.display = 'block';
+            });
+            
+            closeCart.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+            
+            // Ir para checkout
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Seu carrinho está vazio!');
+                    return;
+                }
+                
+                cartModal.style.display = 'none';
+                
+                // Atualizar navegação
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                
+                // Mostrar página de checkout
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById('checkout').classList.add('active');
+                
+                // Atualizar resumo do pedido
+                updateCheckoutSummary();
+                
+                window.scrollTo(0, 0);
+            });
+            
+            // Adicionar produto ao carrinho (botões na página)
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Impedir que o clique no botão abra o modal do produto
+                    
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    
+                    addToCart(id, name, price);
+                    
+                    // Feedback visual
+                    this.textContent = 'Adicionado!';
+                    this.style.backgroundColor = '#32CD32';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Adicionar ao Carrinho';
+                        this.style.backgroundColor = '';
+                    }, 1000);
+                });
+            });
+            
+            // Adicionar produto ao carrinho (modal)
+            modalAddToCart.addEventListener('click', function() {
+                if (currentProduct) {
+                    const size = document.getElementById('productSize').value;
+                    const color = document.getElementById('productColor').value;
+                    
+                    let productName = currentProduct.name;
+                    if (size) productName += ` (Tamanho: ${size})`;
+                    if (color) productName += ` (Cor: ${color})`;
+                    
+                    addToCart(currentProduct.id, productName, currentProduct.price);
+                    productModal.style.display = 'none';
+                    
+                    // Feedback
+                    alert('Produto adicionado ao carrinho!');
+                }
+            });
+            
+            // Função para adicionar item ao carrinho
+            function addToCart(id, name, price) {
+                // Verificar se o produto já está no carrinho
+                const existingItem = cart.find(item => item.id === id && item.name === name);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: id,
+                        name: name,
+                        price: price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+            }
+            
+            // Atualizar carrinho
+            function updateCart() {
+                cartItems.innerHTML = '';
+                let total = 0;
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<p>Seu carrinho está vazio.</p>';
+                } else {
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        
+                        const cartItemElement = document.createElement('div');
+                        cartItemElement.classList.add('cart-item');
+                        cartItemElement.innerHTML = `
+                            <img src="https://via.placeholder.com/70" alt="${item.name}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">R$ ${item.price.toFixed(2)}</div>
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn minus" data-id="${item.id}" data-name="${item.name}">-</button>
+                                    <span class="quantity">${item.quantity}</span>
+                                    <button class="quantity-btn plus" data-id="${item.id}" data-name="${item.name}">+</button>
+                                </div>
+                            </div>
+                            <button class="remove-item" data-id="${item.id}" data-name="${item.name}">&times;</button>
+                        `;
+                        
+                        cartItems.appendChild(cartItemElement);
+                        
+                        // Adicionar eventos de controle de quantidade
+                        const minusBtn = cartItemElement.querySelector('.minus');
+                        const plusBtn = cartItemElement.querySelector('.plus');
+                        const removeButton = cartItemElement.querySelector('.remove-item');
+                        
+                        minusBtn.addEventListener('click', function() {
+                            const itemId = this.getAttribute('data-id');
+                            const itemName = this.getAttribute('data-name');
+                            updateQuantity(itemId, itemName, -1);
+                        });
+                        
+                        plusBtn.addEventListener('click', function() {
+                            const itemId = this.getAttribute('data-id');
+                            const itemName = this.getAttribute('data-name');
+                            updateQuantity(itemId, itemName, 1);
+                        });
+                        
+                        removeButton.addEventListener('click', function() {
+                            const itemId = this.getAttribute('data-id');
+                            const itemName = this.getAttribute('data-name');
+                            removeFromCart(itemId, itemName);
+                        });
+                    });
+                }
+                
+                cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+                cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
+            
+            // Atualizar quantidade do item
+            function updateQuantity(id, name, change) {
+                const item = cart.find(item => item.id === id && item.name === name);
+                
+                if (item) {
+                    item.quantity += change;
+                    
+                    if (item.quantity <= 0) {
+                        removeFromCart(id, name);
+                    } else {
+                        updateCart();
+                    }
+                }
+            }
+            
+            // Remover item do carrinho
+            function removeFromCart(id, name) {
+                cart = cart.filter(item => !(item.id === id && item.name === name));
+                updateCart();
+            }
+            
+            // Atualizar resumo do checkout
+            function updateCheckoutSummary() {
+                checkoutItems.innerHTML = '';
+                let total = 0;
+                
+                if (cart.length === 0) {
+                    checkoutItems.innerHTML = '<p>Seu carrinho está vazio.</p>';
+                } else {
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        
+                        const itemElement = document.createElement('div');
+                        itemElement.classList.add('order-summary-item');
+                        itemElement.innerHTML = `
+                            <div>
+                                <div>${item.name}</div>
+                                <div>Qtd: ${item.quantity}</div>
+                            </div>
+                            <div>R$ ${itemTotal.toFixed(2)}</div>
+                        `;
+                        
+                        checkoutItems.appendChild(itemElement);
+                    });
+                }
+                
+                checkoutTotal.textContent = `R$ ${total.toFixed(2)}`;
+            }
+            
+            // Selecionar método de pagamento
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // Remover seleção anterior
+                    paymentMethods.forEach(m => m.classList.remove('selected'));
+                    
+                    // Adicionar seleção atual
+                    this.classList.add('selected');
+                    
+                    // Obter método selecionado
+                    selectedPaymentMethod = this.getAttribute('data-method');
+                    
+                    // Mostrar detalhes do método de pagamento
+                    cardDetails.style.display = 'none';
+                    pixDetails.style.display = 'none';
+                    boletoDetails.style.display = 'none';
+                    
+                    if (selectedPaymentMethod === 'credit' || selectedPaymentMethod === 'debit') {
+                        cardDetails.style.display = 'block';
+                    } else if (selectedPaymentMethod === 'pix') {
+                        pixDetails.style.display = 'block';
+                    } else if (selectedPaymentMethod === 'boleto') {
+                        boletoDetails.style.display = 'block';
+                    }
+                });
+            });
+            
+            // Finalizar pedido
+            checkoutForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (cart.length === 0) {
+                    alert('Seu carrinho está vazio!');
+                    return;
+                }
+                
+                if (!selectedPaymentMethod) {
+                    alert('Por favor, selecione um método de pagamento.');
+                    return;
+                }
+                
+                // Coletar dados do formulário
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Simular processamento do pedido
+                alert('Pedido realizado com sucesso! Obrigado por comprar na TWICE LOJA!');
+                
+                // Limpar carrinho
+                cart = [];
+                updateCart();
+                
+                // Redirecionar para página inicial
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                document.querySelector('.nav-link[data-page="home"]').classList.add('active');
+                
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById('home').classList.add('active');
+                
+                window.scrollTo(0, 0);
+            });
+            
+            // Funcionalidade do formulário de cadastro
+            const signupForm = document.getElementById('signupForm');
+            
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Coletar dados do formulário
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Simular envio (em um caso real, enviaria para um servidor)
+                alert(`Obrigado por se cadastrar, ${data.firstName}! Você agora faz parte do nosso fandom de ONCEs!`);
+                this.reset();
+            });
+            
+            // Inicializar páginas de categoria com produtos
+            function initCategoryPages() {
+                // Álbuns
+                const albumsGrid = document.querySelector('#albums .product-grid');
+                products.albums.forEach(album => {
+                    albumsGrid.appendChild(createProductCard(album));
+                });
+                
+                // Roupas
+                const clothingGrid = document.querySelector('#clothing .product-grid');
+                products.clothing.forEach(clothing => {
+                    clothingGrid.appendChild(createProductCard(clothing));
+                });
+                
+                // Acessórios
+                const accessoriesGrid = document.querySelector('#accessories .product-grid');
+                products.accessories.forEach(accessory => {
+                    accessoriesGrid.appendChild(createProductCard(accessory));
+                });
+            }
+            
+            // Criar card de produto
+            function createProductCard(product) {
+                const card = document.createElement('div');
+                card.classList.add('product-card');
+                card.setAttribute('data-product-id', product.id);
+                
+                card.innerHTML = `
+                    <div class="product-img">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description.substring(0, 80)}...</p>
+                        <div class="product-price">R$ ${product.price.toFixed(2)}</div>
+                        <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Adicionar ao Carrinho</button>
+                    </div>
+                `;
+                
+                // Adicionar eventos
+                card.addEventListener('click', function() {
+                    openProductModal(product.id);
+                });
+                
+                const addButton = card.querySelector('.add-to-cart');
+                addButton.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    addToCart(product.id, product.name, product.price);
+                    
+                    // Feedback visual
+                    this.textContent = 'Adicionado!';
+                    this.style.backgroundColor = '#32CD32';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Adicionar ao Carrinho';
+                        this.style.backgroundColor = '';
+                    }, 1000);
+                });
+                
+                return card;
+            }
+            
+            // Abrir modal de produto
+            function openProductModal(productId) {
+                // Encontrar o produto em todas as categorias
+                let product = null;
+                
+                for (const category in products) {
+                    const found = products[category].find(p => p.id == productId);
+                    if (found) {
+                        product = found;
+                        break;
+                    }
+                }
+                
+                if (product) {
+                    currentProduct = product;
+                    
+                    // Atualizar modal com informações do produto
+                    document.getElementById('productModalTitle').textContent = product.name;
+                    document.getElementById('productModalPrice').textContent = `R$ ${product.price.toFixed(2)}`;
+                    document.getElementById('productModalDescription').textContent = product.description;
+                    document.getElementById('productModalImg').style.backgroundImage = `url('${product.image}')`;
+                    
+                    // Mostrar modal
+                    productModal.style.display = 'block';
+                }
+            }
+            
+            // Filtros de busca (funcionalidade básica)
+            const searchBoxes = document.querySelectorAll('.search-box input');
+            searchBoxes.forEach(box => {
+                box.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const productGrid = this.closest('.container').querySelector('.product-grid');
+                    const products = productGrid.querySelectorAll('.product-card');
+                    
+                    products.forEach(product => {
+                        const title = product.querySelector('h3').textContent.toLowerCase();
+                        if (title.includes(searchTerm)) {
+                            product.style.display = 'block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Filtros por categoria (funcionalidade básica)
+            const filters = document.querySelectorAll('select[id$="-filter"]');
+            filters.forEach(filter => {
+                filter.addEventListener('change', function() {
+                    const value = this.value;
+                    const productGrid = this.closest('.container').querySelector('.product-grid');
+                    const products = productGrid.querySelectorAll('.product-card');
+                    
+                    if (value === 'all') {
+                        products.forEach(product => {
+                            product.style.display = 'block';
+                        });
+                    } else {
+                        // Em um site real, isso filtraria por categoria real do produto
+                        // Aqui é apenas uma demonstração
+                        products.forEach((product, index) => {
+                            if (index % 2 === 0) {
+                                product.style.display = 'block';
+                            } else {
+                                product.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
